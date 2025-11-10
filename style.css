@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani:wght@500&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Rajdhani', sans-serif;
+  background: radial-gradient(circle at 25% 25%, #0d0221, #11052c 50%, #000);
+  color: #fff;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5em;
+  color: #00f6ff;
+  text-shadow: 0 0 20px #00f6ff;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #bbb;
+  font-size: 1.1em;
+  margin-bottom: 30px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  width: 90%;
+  max-width: 750px;
+}
+
+@media (max-width: 700px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  border: 2px solid #00f6ff;
+  border-radius: 15px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00f6ff;
+  font-size: 2.5em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 246, 255, 0.2);
+}
+
+.card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 35px #00f6ff;
+}
+
+.card.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  filter: grayscale(70%);
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(10, 10, 20, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 100;
+}
+
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-content {
+  background: #111;
+  border: 2px solid #00f6ff;
+  box-shadow: 0 0 30px #00f6ff;
+  border-radius: 20px;
+  padding: 25px 35px;
+  max-width: 450px;
+  text-align: center;
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+#questionText {
+  font-size: 1.3em;
+  margin-bottom: 15px;
+  color: #00f6ff;
+  text-shadow: 0 0 10px #00f6ff;
+}
+
+#options button, .group-btn {
+  background: #0f0f2d;
+  color: #fff;
+  border: 2px solid #00f6ff;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#options button:hover, .group-btn:hover {
+  background: #00f6ff;
+  color: #0f0f2d;
+  box-shadow: 0 0 15px #00f6ff;
+}
+
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #00f6ff;
+  padding: 25px 40px;
+  border-radius: 15px;
+  text-align: center;
+  color: #00f6ff;
+  text-shadow: 0 0 15px #00f6ff;
+  font-size: 1.4em;
+  font-weight: bold;
+  box-shadow: 0 0 30px #00f6ff;
+  opacity: 0;
+  transition: all 0.25s ease-out;
+  pointer-events: none;
+  z-index: 200;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.15);
+  animation: flashPop 0.4s ease-out;
+}
+
+@keyframes flashPop {
+  0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0.2; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-5px, 5px); }
+  50% { transform: translate(5px, -5px); }
+  75% { transform: translate(-5px, 5px); }
+  100% { transform: translate(0, 0); }
+}
+
+.scoreboard {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: rgba(10, 10, 30, 0.95);
+  border: 3px solid #00f6ff;
+  border-radius: 25px;
+  padding: 50px 80px;
+  color: #00f6ff;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 2px #00f6ff, 0 0 5px #00f6ff;
+  font-size: 2.5em;
+  font-weight: bold;
+  display: none;
+  text-align: center;
+  box-shadow: 0 0 4px #00f6ff, inset 0 0 2px #00f6ff;
+  z-index: 300;
+  animation: none;
+}
+
+.scoreboard.show {
+  display: block;
+  animation: pulseNeon 1s ease-in-out infinite alternate, flashPop 0.8s ease;
+}
+
+@keyframes pulseNeon {
+  from {
+    box-shadow: 0 0 2px #00f6ff, 0 0 6px #00f6ff;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    box-shadow: 0 0 6px #00f6ff, 0 0 10px #00f6ff;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}

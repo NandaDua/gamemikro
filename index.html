@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyberpunk UX & CX Quiz - Team Mode</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">⚡ UX & CX Team Challenge ⚡</h1>
+    <p class="subtitle">Pilih kartu, tentukan kelompokmu, lalu jawab pertanyaannya!</p>
+
+    <div class="card-grid">
+      <div class="card" data-question="0"><span>?</span></div>
+      <div class="card" data-question="1"><span>?</span></div>
+      <div class="card" data-question="2"><span>?</span></div>
+      <div class="card" data-question="3"><span>?</span></div>
+      <div class="card" data-question="4"><span>?</span></div>
+      <div class="card" data-question="5"><span>?</span></div>
+    </div>
+  </div>
+
+  <div id="groupModal" class="modal">
+    <div class="modal-content">
+      <h2>Kamu kelompok berapa?</h2>
+      <div id="groupOptions">
+        <button class="group-btn" data-group="1">Kelompok 1</button>
+        <button class="group-btn" data-group="2">Kelompok 2</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="questionModal" class="modal">
+    <div class="modal-content">
+      <h2 id="questionText"></h2>
+      <div id="options"></div>
+    </div>
+  </div>
+
+  <div id="notification" class="notification"></div>
+  <div id="scoreboard" class="scoreboard"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
